@@ -162,22 +162,22 @@ class App extends React.Component
     constructor()
     {
       super()
-      this.intervalObj = undefined
+        this.intervalObj = undefined
       this.state = {
           title : "Good Morning",
           num : 25,
-          cities : [
+            cities : [
             "Delhi" , "Bhopal" , "Pune" , "Raipur" , "Indore"
           ]
       }
     }
     startIncrement = ()=>{
-      this.intervalObj = setInterval(()=>
+          setInterval(()=>
           {
             this.setState({num : this.state.num+5})
           },100);
     }
-    stopIncrement = ()=>{
+       stopIncrement = ()=>{
           clearInterval(this.intervalObj)
           this.setState({num : 0})
     }
@@ -187,10 +187,11 @@ class App extends React.Component
         this.setState({title:"Good Evening"})
         console.log(this.state)
     }
-    addCity = ()=>{
+     addCity = ()=>{
       var city = document.getElementById('t1').value;
       this.setState({cities : [...this.state.cities,city] })
     }    
+   
     render()
     {    
       console.log("Render Run ...... ")
