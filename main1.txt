@@ -239,3 +239,39 @@ https://todearhemant.pythonanywhere.com/patient/api/patients/
 
 https://docs.google.com/spreadsheets/d/1HCTAczKxh_5fILKoPzkWgUf8UGHvek3KjLXT7LNyGEo/edit?usp=sharing
 
+##$$$$$$############
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Properties>
+		<Property name="baseDir">logs</Property>
+	</Properties>
+	<Appenders>
+		<RollingFile name="RollingFile" fileName="${baseDir}/app.log"
+			filePattern="${baseDir}/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d{dd:MM:yyyy - HH:mm:ss.SSS} %-3p %c{2} [%t] - %m%n
+				</Pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="1KB" />
+			</Policies>
+		</RollingFile>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.loggers.one.App" level="error"
+			additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+		<Logger name="com.loggers.two" level="error" additivity="false">
+			<AppenderRef ref="RollingFile" />
+		</Logger>
+		<Root level="trace">
+			<AppenderRef ref="RollingFile" />
+		</Root>
+	</Loggers>
+</Configuration>
